@@ -1,0 +1,60 @@
+% ==================================certificate1.tex================================
+% To print name of only the seminar coordinator 1 in the certificate page
+
+\newpage
+
+\begin{tikzpicture}[overlay,remember picture]
+\draw [line width=3pt]
+       ($ (current page.north west) + (1.3cm,-1.3cm) $)
+    rectangle
+    ($ (current page.south east) + (-1.3cm,1.3cm) $);
+\draw [line width=1pt]
+    ($ (current page.north west) + (1.45cm,-1.45cm) $)
+    rectangle
+    ($ (current page.south east) + (-1.45cm,1.45cm) $); 
+\end{tikzpicture}
+        
+\begin{center}	
+    \textbf{DEPARTMENT OF \MakeUppercase{\dept}} \\	
+	\textbf{\MakeUppercase{\college}} \\
+	\textbf{\MakeUppercase{\collegeplace}} \\
+	\textbf{\acadyear} 
+\end{center}
+
+\vspace{20pt}
+
+\begin{center}
+	\includegraphics[scale=0.38]{bvcoe_logo}	
+\end{center}
+
+\vspace{20pt}
+
+\begin{center}
+	\textbf{CERTIFICATE}
+\end{center}
+
+This is to certify that the report entitled \textbf{\title} submitted by \textbf{\studentA}\hspace*{2pt}(\studentAroll),\hspace*{2pt}\textbf{\studentB}\hspace*{2pt}(\studentBroll),\hspace*{2pt}\textbf{\studentC}\hspace*{2pt}(\studentCroll) and \textbf{\studentD}\hspace*{2pt}(\studentDroll) to the Bharati Vidyapeeth College of Engineering in fulfillment of the B.E.\ degree in \branch \hspace*{2pt} is a bonafide record of the project work carried out by him under our guidance and supervision. This report in any form has not been submitted to any other University or Institute for any purpose.
+
+
+\begin{singlespace}
+	\vspace*{3cm}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{c p{3cm} c} 
+			\textbf{\guide} & &  \textbf{\hod}\\
+			(\guidedes)     & & (\hoddes)
+		\end{tabular}
+		
+	\end{table}
+	
+	\vspace*{3cm}
+	
+	\begin{center}
+		(\guideextdes)\\
+	\end{center}
+\end{singlespace}
+
+\thispagestyle{empty}
+
+
+

@@ -1,0 +1,249 @@
+\chapter{Implementation}
+
+\section{Editing your document}
+
+You can edit your \LaTeX \ document with any text editor. EMACS, vi, kate, gedit or even (ugh!) MicroSoft Notepad can be used. Save your document with a name that ends in .tex so that you and \LaTeX \ know that it contains \LaTeX \ source code. An absolute minimum \LaTeX \ document is:
+
+\begin{lstlisting}
+\documentclass{article}
+\begin{document} 
+Here is some text for \LaTeX\ to typeset. 
+\end{document}
+\end{lstlisting}
+
+Note that things beginning with a are instructions to the LATEX program. Everything else is text to be typeset. 
+
+\section{Organize}
+
+\LaTeX \ can organize, number, and index chapters and sections of document. There are up to 7 levels of depth for defining sections depending on the document class:
+\begin{lstlisting}
+ -1 \part{part}
+  0 \chapter{chapter}
+  1 \section{section}
+  2 \subsection{subsection}
+  3 \subsubsection{subsubsection}
+  4 \paragraph{paragraph}
+  5 \subparagraph{subparagraph}
+\end{lstlisting}
+
+Usually, \verb|\section| is the top-level document command in most documents. However, in reports or books, and similar long documents, this would be \verb|\chapter| or \verb|\part|. \\
+
+In our template we have used report document so \verb|\chapter| is the top-level document command.
+
+\section{Sectioning}
+
+You can generate section, subsection, subsubsection headings using \verb|\section| etc. The sections are numbered automatically.
+
+\subsection{Avoiding numbering}
+
+If you want a section without its number, put a star on the end of the command, like this: Un numbered subsubsection Generated with the \verb|\subsubsection*{}| command.
+
+\subsection{Unnumbered sections in the table of contents}
+
+To add an unnumbered section to the table of contents, use the \verb|\addcontentsline| command like this:
+\begin{lstlisting}
+\addcontentsline{toc}{section}{Title of the section}
+\end{lstlisting}
+
+\section{Chapters}
+
+The \LaTeX \ default starts each chapter on a fresh page, an odd-numbered page if the document is two-sided. It produces a chapter number such as ‘Chapter 1’ in large boldface type (the size is \verb|\huge|). It then puts title on a fresh line, in boldface type that is still larger (size \verb|\Huge|). It also increments the chapter counter, adds an entry to the table of contents, and sets the running header information.
+
+This produces a chapter.
+
+\begin{lstlisting}
+\chapter{Loomings}
+Call me Ishmael.
+    Some years ago--
+\end{lstlisting}
+
+In our template we have seperated chapter for each topic. The list goes as
+
+\begin{lstlisting}
+\chapter{Introduction}
+\chapter{Literature Review}
+\chapter{Problem Definition}
+\chapter{Objective of Work}
+\chapter{Models/Block diagram}
+\chapter{System requirements}
+\chapter{Implementation}
+\chapter{Results and Analysis}
+\chapter{Conslusion anf Future Scope}
+\end{lstlisting}
+
+\section{Including figures}
+
+Figures are inserted using the \verb|\includegraphics| command. For this to work, you need to have used \verb|\usepackage{graphicx}| near the start of the document. You can use \verb|\includegraphics| anywhere you like. \\
+
+\begin{figure}[htb]
+    \noindent\hrulefill
+	\centering
+	\caption{This picture is in a float, which means that \LaTeX \ will put it in a suitable position, somewhere close to where you put it in your LATEX source.}
+	\includegraphics[width=0.3\linewidth]{butterfly}
+	\label{butterflyCenter}\par
+    \hrulefill
+\end{figure}
+
+The below figure has to appear exactly where I put it, between “. . . you like.” and “The above figure. . . ”. This is not smart for anything except the smallest graphics, because it can lead to large spaces at the foot of a page. More usually, we put figures into a float, like figure \ref{butterflyCenter}. \\
+
+The source code for a floating figure looks like this:
+
+\begin{lstlisting}
+\begin{figure}[h!] 
+Figure content goes here 
+\caption{\label{myfiglabel} Your caption goes here} 
+\end{figure}
+\end{lstlisting}
+
+Note that LATEX provides a numbered caption. Make sure you put your \verb|\label{}| inside the caption or the cross-referencing may not work properly. \\
+
+The optional \verb|[htbp]| argument gives you a little control over where the figure goes: you can put any combination of here \verb|[h]|, top (of a page) \verb|[t]| , bottom of a page \verb|[b]|, (whole) page (containing only figures) \verb|[p]| and LATEX will do its best give you the best of the options you permitted. Note that you need to be relaxed about figures not appearing exactly “here”. For this reason, always refer to a figure by its number, never as “the figure below” or “the figure above”. (This is good practice for real life: when you write a paper for a scientific journal, the journal staff always take control over figure placement and you never know where they are going to put the figures.) New LATEX users often try to be too restrictive about figure placement; this often results in LATEX deciding that there is no good answer and putting all of your figures right at the end of the document. \\
+
+The caption is usually positioned below the figure. With a bit more work you can position the caption at the side of the figure; if your figure is square-ish this saves you some space. Figure \ref{butterflyLeft} shows how this is done. \\
+
+\noindent\hrulefill
+\begin{figure}[htbp]
+  \begin{minipage}[c]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{butterfly}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.7\linewidth}
+    \caption{For this figure, the caption is placed inside a minipage; this is a small block of text which is typeset as a unit and then treated as a single item, as if it were a picture, or a very large character.} 
+    \label{butterflyLeft}
+  \end{minipage}
+\end{figure}
+\par
+\noindent\hrulefill
+  
+LATEX can not include all types of graphics, so you need to make your pictures in the correct format, or convert them to it.
+
+\begin{itemize}
+    \item If you use latex and dvips then all of your figures must be encapsulated PostScript.
+    \item If you use pdflatex then your figures may be any of
+    \begin{itemize}
+        \item Portable Document Format (PDF)
+        \item JPEG image
+        \item PNG image
+    \end{itemize}
+\end{itemize}
+
+If you miss off the filetype extension, then LATEX will look for a file with a suitable extension. So if you do 
+
+\begin{lstlisting}
+\includegraphics[width=4cm]{lara_croft}
+\end{lstlisting}
+
+then latex will look for a file called \verb|lara_croft.eps|, but pdflatex will look for files called \verb|lara_croft.pdf|, \verb|lara_croft.jpg| and \verb|lara_croft.png| (in I don’t know what order). 
+
+\section{Tables}
+
+The \verb|tabular| environment is the default LATEX method to create tables. You must specify a parameter to this environment; here we use \verb|{c c c}| which tells LaTeX that there are three columns and the text inside each one of them must be centred.
+
+\subsection{Creating a simple table in LATEX}
+
+The tabular environment provides additional flexibility; for example, you can put separator lines in between each column:
+
+\begin{lstlisting}
+\begin{tabular}{ |c|c|c| } 
+    \hline
+    cell1 & cell2 & cell3 \\ 
+    cell4 & cell5 & cell6 \\ 
+    cell7 & cell8 & cell9 \\ 
+    \hline
+\end{tabular}
+\end{lstlisting}
+
+This produces :
+
+\begin{tabular}{ |c|c|c| } 
+    \hline
+    cell1 & cell2 & cell3 \\ 
+    cell4 & cell5 & cell6 \\ 
+    cell7 & cell8 & cell9 \\ 
+    \hline
+\end{tabular}
+
+\section{Page Layout}
+
+Fitting a LATEX document to a strict page layout can be a bit fraught. I set this document up so that it matched the requirements of the projects course organiser:
+
+\begin{itemize}
+    \item 12 point font
+    \item 2.5 cm margins
+    \item 1.0 line spacing
+    \item A space (size unspecified) between paragraphs
+\end{itemize}
+
+But the exact size and position on the paper may be messed up a bit in the printing process. The important thing is to ensure that page scaling and auto-centre and rotate are turned OFF when you print the page. In the evince document viewer, the print dialog has a “Page Handling” tab; select “Page Scaling=None” and uncheck the “Auto-Rotate and Centre” box. The print dialog in Adobe reader has a page handling section with similar controls. 
+
+\begin{lstlisting}
+\textheight=23cm 
+\topmargin=0.5cm 
+\oddsidemargin=0.5cm 
+\textwidth=15.0cm 
+\end{lstlisting}
+
+\section{Fonts and sizes}
+
+Try to avoid controlling font size by hand. LATEX’s default style is pre-set to use sensible font sizes for most things. If you insist, LATEX comes with several pre-defined sizes: {\tiny tiny}, {\scriptsize scriptsize}, {\footnotesize footnotesize}, {\small small}, {\normalsize normalsize}, {\large large}, {\large large}, {\LARGE LARGE}, {\huge huge}, and {\Huge Huge}.
+
+\section{Page Border}
+
+Page border for a certain page can be added using following code :
+
+\noindent\verb|\begin{tikzpicture}[overlay,remember picture]|\\
+\verb|    \draw [line width=3pt]|\\
+\verb|        ($ (current page.north west) + (1.3cm,-1.3cm) $)|\\
+\verb|            rectangle|\\
+\verb|        ($ (current page.south east) + (-1.3cm,1.3cm) $);|\\
+\verb|    \draw [line width=1pt]|\\
+\verb|        ($ (current page.north west) + (1.45cm,-1.45cm) $)|\\
+\verb|            rectangle|\\
+\verb|        ($ (current page.south east) + (-1.45cm,1.45cm) $); |\\
+\verb|\end{tikzpicture}|\\
+
+In our template, we have added page border in cover page, certificate and declaration page.
+
+\section{User defined variables}
+
+\begin{lstlisting}
+\def<cs><arg syntax>{<definition>}
+\end{lstlisting}
+
+This defines \verb|<cs>| without checking if it already exists. The ⟨definition⟩ part is the same as that for \verb| \newcommand|, but with \verb|\def| you don't just specify the number of arguments. Instead you declare the argument syntax in \verb|<arg syntax>| where each parameter is identified by \verb|#<n>| (where\verb|<n>| is a number from 1 to 9).
+
+The simplest form is when you define a command that has no arguments. For example:
+
+\begin{lstlisting}
+\def\test{This is a test.}% definition
+\test
+\end{lstlisting}
+
+produces:
+
+\def\test{This is a test.}% definition
+\test
+
+\verb|\def| can be preceded by \verb|\global| (the redefinition isn't confined to the current group, also controlled by \verb|\globaldefs|), \verb|\long| (the command admits long arguments), \verb|\outer| (the command is not tolerated in parts of the code which are read at high speed).
+
+\verb|\gdef| works as \verb|\def| except that the definition is automatically set as \verb|\global|, or in other words, visible from the outside of the current group. In our template we have created \verb|\gdef| definitions such as
+
+\begin{lstlisting}
+\gdef \title {Technical Project Report Template using Latex} 
+\gdef \dept {Information Technology} 
+\gdef \degree {Bachelor of Engineering} 
+\gdef \branch {Information Technology} 
+\gdef \college {Bharati Vidyapeeth College of Engineering} 
+\gdef \collegeplace {Navi Mumbai} 
+\gdef \studentA {Bhoir Ankit Bharat} 
+\gdef \studentAroll {4407} 
+\gdef \studentB {Chouhan Aman Ravi} 
+\gdef \studentBroll {4414} 
+\gdef \studentC {Badge Aman Ramesh} 
+\gdef \studentCroll {4404} 
+\gdef \studentD {Ankolekar Vaibhav Pandurang} 
+\gdef \studentDroll {4401} 
+\gdef \guide {Prof. Hanamant B. Sale}
+\gdef \guidedes {Subject Co-ordinator}
+\gdef \hod {Dr. Shankar M. Patil} 
+\gdef \hoddes {Head of Department} 
+\end{lstlisting}

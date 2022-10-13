@@ -1,0 +1,67 @@
+\chapter{Introduction}
+
+The generally used documents such as project reports, notices, internal notes etc. in any technical institute are expected to be submitted in a standard specified format. The commonly used editing tools for this purpose are Microsoft Word, notepad, wordpad, etc. Taking into consideration various formatting constraints namely alignment, font styles, paragraphs, sections, subsections, etc. becomes a bit tedious using MS Word or other tools. Also maintaining the subscripts and superscripts to obtain the various mathematical equations becomes difficult and time consuming. \\
+
+To overcome this drawback we have \LaTeX \, a documentation preparation system that enables the document writer to concentrate on the contents of their text, without bothering too much about the formatting of it. 
+
+\section{\LaTeX \ : what is it?}
+
+\LaTeX \ is a document preparation system for high-quality typesetting. It is most often used for medium-to-large technical or scientific documents but it can be used for almost any form of publishing. \\
+
+\LaTeX \ is not a word processor. \LaTeX \ is based on the idea that authors should be able to focus on the content of what they are writing without being distracted by its visual presentation. In preparing a \LaTeX \ document, the author specifies the logical structure and lets the \LaTeX \ system worry about the presentation of these structures. It therefore encourages the separation of layout from content while still allowing manual typesetting adjustments where needed. \\
+
+\LaTeX \ is based on Donald E. Knuth’s TEX typesetting language or certain extensions. \LaTeX \ was first developed in 1985 by Leslie Lamport. 
+
+\section{What are the advantages and disadvantages?}
+
+You might want to consider using \LaTeX \ for your project write-up and your other reports for the following reasons:
+
+\begin{itemize}
+    \item The typeset text looks nicer than word-processor output.
+    \item The table of contents, cross-references and bibliography can be generated automatically. 
+    \item Many journals provide \LaTeX \ styles and templates, so that when you come to write scientific papers you can do so in \LaTeX \ without thinking about the typesetting at all. \LaTeX \ is threfore a useful skill to have learned for any career in the hard sciences.
+    \item \LaTeX \ is available for FREE, for all popular operating systems (and most of the unpopular ones).
+    \item The \LaTeX \ way of typesetting equations occurs in other contexts, e.g. markdown cells in jupyter notebooks and any text items in matplotlib plots.
+    \item You like programming. You hate word processors and find them frustrating.
+\end{itemize}
+Reasons that you might not want to choose \LaTeX \ include:
+\begin{itemize}
+    \item \LaTeX \ is not WYSIWYG. You type your document into an ordinary text editor and typeset it in a separate step. Arguably, this helps one to separate layout (the computer’s job) from content (your job). 
+    \item While it is easy to get \LaTeX \ to typeset your document in its default style, it can be tiresome or obscure to get it to do anything different.
+    \item The learning curve can be a little steep at first.
+    \item You like word processors. You are good at getting them to do your bidding. You want to make use of this expertise.
+\end{itemize}
+
+\section{Why \LaTeX \ ?}
+
+What you see is what you get (WYSIWYG) programs make it easy to put text wherever you want in whatever size and style of type you want, i.e., WYSIWYG programs offer visual design. The visual design is fine for short, simple documents like letters and memos. The visual design is not good for more complex documents such as scientific papers. For this purpose, we use \LaTeX \ that offers logical design. \\
+
+\LaTeX \ is intended to provide a high-level language that accesses the power of TEX. \LaTeX \ comprises a collection of TEX macros and a program to process \LaTeX \ documents. Because the TEX formatting commands are very low-level, it is usually much simpler for end-users to use \LaTeX \ . As \LaTeX \ is distributed under the terms of the \LaTeX \ Project Public License (LPPL), \LaTeX \ is free software.
+
+\section{Required Parts of \LaTeX \ input file}
+
+A few commands must appear in every \LaTeX \ input file in a certain order. They are: \\
+\\
+\verb|\documentclass{classname}|\\
+\verb|\begin{document}|\\
+\verb|\end{document}|\\
+
+\par The documentstyle has a required argument stylename to select an overall type-setting style for the document; the one normally used is article (there are also book, report, letter, and memo). It also has an optional argument to select 11pt or 12pt normal type size (10pt is the default size). The actual text of user document and associated commands go between the begin and end commands.
+
+\section{Customizing \LaTeX}
+
+There are situations where LATEXdoes not provide a command or environment that matches user needs, or the output produced by some existing command may not meet user requirements. To add your own commands, use \\
+\\
+\verb|\newcommand{name}[num]{definition}| \\
+
+\par The command requires two arguments: the name of the command you want to create, and the definition of the command. The num argument in square brackets is optional. 
+
+\section{Creation of style file}
+
+Typically, a style sheet is specified at the beginning of document. This style sheet applies to the entire document. To create your own style file, at the very beginning of the text document just write,\\ 
+\\
+\verb|\ProvidesPackage{mypack}|\\
+
+\par where mypack is the name of package. Write whatever you want in it using all the LATEXcommands you know. The style file should have the same name as that of the package name. Save this style file with extension .sty. Now, it is necessary to import this style file in your TEXdocument which can be done using following command. \\
+\\
+\verb|\usepackage{mypack}|\\

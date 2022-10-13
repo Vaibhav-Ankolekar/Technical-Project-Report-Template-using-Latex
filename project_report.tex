@@ -1,0 +1,295 @@
+% ============================================= %
+
+\documentclass[12pt,a4paper]{report}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage{framed}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage{epsfig}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{ragged2e}
+\usepackage{gensymb}
+\usepackage{amsfonts} 
+\usepackage[left=2.54cm,top=2.54cm,right=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{setspace}           
+\usepackage{float}
+\usepackage{txfonts}
+\usepackage{lipsum}
+\usepackage{indentfirst}
+\newcommand{\Usefont}[1]{\fontfamily{#1}\selectfont}
+
+\usepackage{lscape} % for landscape tables
+\renewcommand{\baselinestretch}{1} 
+
+\usepackage{blindtext}
+\usepackage{xpatch}
+\usepackage{url}
+\usepackage{leqno}
+\usepackage{subcaption}
+\linespread{1.2}
+\usepackage[intoc, english]{nomencl}
+\hyphenpenalty=5000
+\tolerance=1000
+\usepackage[nottoc]{tocbibind}
+\bibliographystyle{IEEEtran}
+\renewcommand{\bibname}{References}
+
+\usepackage{titlesec}
+
+% format for unnumbered chapter titles
+\titleformat{name=\chapter,numberless}[block]
+{\centering\normalfont\LARGE\bfseries}{}{0pt}{\Huge}
+\titlespacing*{name=\chapter,numberless}     {0pt}{-20pt}{20pt}
+
+% format for numbered chapter titles
+\titleformat{\chapter}[display]
+{\filcenter\normalfont\Huge\bfseries}
+{\vspace*{\fill}{\chaptertitlename} \thechapter}
+{0pt}{\Huge}[\vspace*{\fill}\newpage]
+\titlespacing*{\chapter}{0pt}{-50pt}{0pt}
+
+% \usepackage{blindtext}
+% \usepackage{showframe}
+
+\usepackage{listings}
+\lstset{
+  columns=flexible,
+  basicstyle=\small\ttfamily,
+  mathescape=true,
+  escapeinside=||
+}
+
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+% \AddToShipoutPictureBG{\ifnum\value{page}<2 % <- change this if you want more
+% % or less pages to have a frame
+% \begin{tikzpicture}[overlay,remember picture]
+% \draw [line width=3pt]
+%       ($ (current page.north west) + (1.5cm,-1.5cm) $)
+%     rectangle
+%     ($ (current page.south east) + (-1.5cm,1.5cm) $);
+% \draw [line width=1pt]
+%     ($ (current page.north west) + (1.65cm,-1.65cm) $)
+%     rectangle
+%     ($ (current page.south east) + (-1.65cm,1.65cm) $); 
+% \end{tikzpicture}%
+% \fi}
+
+
+% ================== Figures ================== %
+
+ 
+% Save all figures in the folder figures and
+% include them in your report using the
+% command \includegraphics{figure-name}
+
+\graphicspath{{figures/}}
+
+% figure files can be in jpeg,jpg, png or 
+% pdf formats
+
+
+\begin{document}
+	
+% ============== Global Variables ============= %
+
+% The entries in this section are to be filled 
+% in by the student with appropriate values
+
+% These values are used throughout the report 
+
+% please fill in the appropriate values in the 
+% brackets {}
+
+% Project title
+\gdef \title{Technical Project Report Template using Latex} 
+
+% Department
+\gdef \dept{Information Technology} 
+% Degree
+\gdef \degree{Bachelor of Engineering} 
+% Branch
+\gdef \branch{Information Technology} 
+
+% Name of the College
+\gdef \college{Bharati Vidyapeeth College of Engineering} 
+% Location of the College
+\gdef \collegeplace{Navi Mumbai} 
+
+% Project group member 1
+\gdef \studentA{Bhoir Ankit Bharat} 
+% Project group member 1 roll number
+\gdef \studentAroll{4407} 
+
+% Project group member 2
+\gdef \studentB{Ankolekar Vaibhav Pandurang} 
+% Project group member 2 roll number
+\gdef \studentBroll{4401} 
+
+% Project group member 3
+\gdef \studentC{Chouhan Aman Ravi} 
+% Project group member 3 roll number
+\gdef \studentCroll{4414} 
+
+% Project group member 4
+\gdef \studentD{Badge Aman Ramesh} 
+% Project batch member 4 roll number
+\gdef \studentDroll{4404} 
+
+% Project guide
+\gdef \guide{Prof. Hanamant B. Sale}
+% Project guide designation
+\gdef \guidedes{Subject Co-ordinator}
+
+% Project external organisation guide
+\gdef \guideext{Prof. Project External Guide} 
+% project external guide designation
+\gdef \guideextdes{External}
+
+% Head of Department
+\gdef \hod{Dr. Shankar M. Patil} 
+% HOD designation
+\gdef \hoddes{Head of Department} 
+
+% Academic year
+\gdef \acadyear{2022 - 23} 
+% Month of Report submission
+\gdef \month{October 2022} 
+% Date of signing the declaration
+\gdef \date{04-10-2022} 
+
+% ================ Cover Page ================= %
+
+% The font pages. The source tex files are there 
+% in the folder
+
+\include{coverpage} 
+
+% Unless essential Do not edit this tex file
+
+% ================ Certificate ================ %
+
+\include{certificate} 
+
+% ================ Declaration ================ %
+
+% Unless essential Do not edit this tex file
+
+\include{declaration} 
+
+\pagenumbering{roman} 
+
+% ================== Abstract ================= %
+
+% Please type in the abstract in abstract.tex file
+
+\include{abstract} 
+
+% ============== Acknowledgement ============== %
+
+% Unless essential Do not edit this tex file
+
+\include{acknowledgement}  
+
+\thispagestyle{empty}
+\newpage
+    
+% ============= Table of Contents ============= %
+
+  
+\tableofcontents
+\listoffigures
+\listoftables
+
+% List of Symbols (Optional) 
+% comment if not required.
+% \include{symbol} %
+% symbol should be added in the file symbol.tex
+
+% ============= Body of the report ============ %
+
+% Arabic numbering is used in the body of the 
+% report
+\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% ================= Chapter 1 ================= %
+
+% add Introduction of your project in 
+% introduction.tex file
+
+\include{introduction}
+
+% ================= Chapter 2 ================= %
+
+% add Literature Survey of your project in 
+% literature-survey.tex file
+
+\include{literature-survey}
+
+% ================= Chapter 3 ================= %
+
+% add Problem Definition of your project in 
+% problem-definition.tex file
+
+\include{problem-definition}
+
+% ================= Chapter 4 ================= %
+
+% add Objectives of Work of your project in 
+% objectives-of-work.tex file
+
+\include{objectives-of-work}
+
+% ================= Chapter 5 ================= %
+
+% add Block Diagram of your project in 
+% block-diagram.tex file
+
+\include{block-diagram}
+
+% ================= Chapter 6 ================= %
+
+% add System Requirements of your project in 
+% system-requirements.tex file
+
+\include{system-requirements}
+
+% ================= Chapter 7 ================= %
+
+% add Implementation of your project in 
+% implementation.tex file
+
+\include{implementation}
+
+% ================= Chapter 8 ================= %
+
+% add Results and Analysis of your project in 
+% results-and-analysis.tex file
+
+\include{results-and-analysis}
+
+% ================= Chapter 9 ================= %
+
+% add Conclusion and Future Scope of your project 
+% in conclusion-and-future-scope.tex file
+
+\include{conclusion-and-future-scope}
+
+% ================= References ================= %
+
+% add References of your project in 
+% references.tex file
+
+\include{references}
+
+\end{document}

@@ -1,0 +1,50 @@
+
+% =============== coverpage.tex =============== %
+  
+
+\newenvironment{coverpage}
+\thispagestyle{empty}
+\begin{titlepage}
+	\begin{center}
+        
+        \begin{tikzpicture}[overlay,remember picture]
+        \draw [line width=3pt]
+               ($ (current page.north west) + (1.3cm,-1.3cm) $)
+            rectangle
+            ($ (current page.south east) + (-1.3cm,1.3cm) $);
+        \draw [line width=1pt]
+            ($ (current page.north west) + (1.45cm,-1.45cm) $)
+            rectangle
+            ($ (current page.south east) + (-1.45cm,1.45cm) $); 
+        \end{tikzpicture}
+        
+		{\Usefont{phv} \Large \bf{\title} \par}
+		\vspace*{40pt}
+		\large \em \Usefont{pzc}{ 
+			A Project Report \par
+			Submitted to the \college \\
+			in partial fulfillment of requirements for the award of degree}\\ [.15\baselineskip]
+		\vspace*{30pt}
+		\Usefont{ppl} {\bfseries  \degree}\\
+		in\\
+		{\Usefont{ppl} {\bfseries \branch}}\\
+		\vspace*{20pt}
+		by\\
+		\vspace*{30pt}
+		\bf {\studentA} (\studentAroll)\\
+		\bf {\studentB} (\studentBroll)\\
+		\bf {\studentC} (\studentCroll)\\
+		\bf {\studentD} (\studentDroll)\\
+		\vspace*{40pt}
+		\centering
+		\begin{figure}[h!]
+			\centerline{\includegraphics[scale=0.5]{bvcoe_logo}}
+		\end{figure}
+		
+		\vspace{\stretch{0.5}}
+		\footnotesize{\bf DEPARTMENT OF \MakeUppercase{\dept}} \par
+		\bf{\MakeUppercase{\college}} \par
+		\bf{\MakeUppercase{\collegeplace}} \par
+		\bf{\month}
+	\end{center}		
+\end{titlepage}	
